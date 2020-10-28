@@ -12,6 +12,7 @@ Mihir M Kestur
 (SRN: PES1UG19CS272, Section: E)
 
 What is the application ? : A web application that hosts games loaded with many cool features
+
 Who will use it ?	        : Anyone for recreational purposes
 
 Features:
