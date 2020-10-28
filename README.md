@@ -1,6 +1,7 @@
 # GamerParadise
 Multi-functional game web-application
 Team members:
+
 Dhruval PB
 (SRN: PES1UG19CS313, Section: E)
 
@@ -19,7 +20,9 @@ Features:
 3.	Chat window 
 
 ●	Friends can chat with each other through text 
+
 ●	We plan on trying to add video/voice calls as well (Still unsure)
+
 
 Additional feature (If time permits): 
 
@@ -29,9 +32,7 @@ Additional feature (If time permits):
 
 6.	Users can rate the game
 
-7.	Sell the games once the user likes the preview
-
-In the future all the games on the website could be preview versions with limited game time. If the user likes the game, they can purchase it from the store
+7.	Sell the games once the user likes the preview. (In the future all the games on the website could be preview versions with limited game time. If the user likes the game, they can purchase it from the store)
 
 8.	Feature to add more games in the future
 
