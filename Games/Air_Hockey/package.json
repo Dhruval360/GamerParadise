@@ -1,0 +1,17 @@
+{
+  "name": "air_hockey",
+  "version": "1.0.0",
+  "description": "A multiplayer Air hockey game made using socket.io",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./Source_files/server.js"
+  },
+  "author": "Dhruval PB",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
