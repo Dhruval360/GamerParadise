@@ -49,11 +49,7 @@ router.post('/register', (req, res) => {
           password2
         });
       } else {
-        const newUser = new User({
-          name,
-          email,
-          password
-        });
+        const newUser = new User({name,email,password});
 
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
