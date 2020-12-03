@@ -8,12 +8,12 @@ const Join = ({location}) => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
 
-    useEffect( () => {
+    useEffect(() => {
 
         const {name} = queryString.parse(location.search);
         setName(name);
 
-    })
+    },[location.search])
 
     return (
         <div className="joinOuterContainer">
