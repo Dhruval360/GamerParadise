@@ -5,7 +5,7 @@ const passport = require('passport');
 // Load User model
 const User = require('../models/User');
 const { forwardAuthenticated } = require('../config/auth');
-router.get("/leaderboard", forwardAuthenticated ,function (req, res) {   
+router.get("/leaderboard", function (req, res) {   
   User.find({} , function (err, allDetails) {
       if (err) {
           console.log(err);
