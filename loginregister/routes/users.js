@@ -5,7 +5,15 @@ const passport = require('passport');
 // Load User model
 const User = require('../models/User');
 const { forwardAuthenticated } = require('../config/auth');
-
+router.get("/leaderboard", forwardAuthenticated ,function (req, res) {   
+  User.find({} , function (err, allDetails) {
+      if (err) {
+          console.log(err);
+      } else {
+          res.render("leaderboard", { details: allDetails })
+      }
+  }).sort({ wins: -1 });
+})
 // Login Page
 router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
 
@@ -63,8 +71,7 @@ router.post('/register', (req, res) => {
                   'You are now registered and can log in'
                 );
                 res.redirect('/users/login');
-              })
-              .catch(err => console.log(err));
+              }).catch(err => console.log(err));
           });
         });
       }

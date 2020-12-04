@@ -1,0 +1,16 @@
+
+<h1 class="mt-4">Leaderboard</h1>
+<% if(details!=null){ %>
+<table>
+<tr>
+    <th>Name</th>
+    <th>Wins</th>
+</tr>
+<% details.forEach(function(item){ %>
+<tr>
+    <td><%= item.name%></td>
+    <td><%= item.wins%></td>
+</tr>
+<% }) %>
+</table>
+<% } %>
