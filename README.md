@@ -1,6 +1,6 @@
 # GamerParadise
 Multi-functional game web-application
-Team members:
+Authors:
 
 [Dhruval PB](https://github.com/Dhruval360)
 (SRN: PES1UG19CS313, Section: E)
@@ -11,12 +11,12 @@ Team members:
 [Mihir M Kestur](https://github.com/mihirkestur)
 (SRN: PES1UG19CS272, Section: E)
 
-What is the application ? : A web application that hosts games loaded with many cool features
+About the app  : A web application that hosts games loaded with many cool features
 
-Who will use it ?	        : Anyone for recreational purposes
+Target audience: Anyone for recreational purposes
 
 Features:
-1.	Individual loginID and Account creation
-2.	Leaderboard feature
-3.	Chat window 
+1. Individual loginID and Account creation
+2. Leaderboard 
+3. Chat window (global chat)
 4. Multiplayer game(s)
