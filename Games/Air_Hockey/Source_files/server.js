@@ -2,7 +2,7 @@ const http = require("http");				// web server
 const socketio = require("socket.io");      // socket.io
 const Game = require("./game.js");   // game class
 const router = require("./router.js")
-var PORT = process.env.PORT || process.env.NODE_PORT || 3000;
+var PORT = process.env.PORT || process.env.NODE_PORT || 5000;
 
 var room = 1; // This is the current room number that gets incremented each time a new room is created
 var users = {}; // To store all connected users
