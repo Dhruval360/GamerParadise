@@ -128,10 +128,23 @@ class game{
             this.emitPuckInfo();
 
             // Checking if any player has won the game
-            if(this.p1.score >= 10 || this.p2.score >= 10){
+            if(this.p1.score >= 1 || this.p2.score >= 1){
                 this.notification("Game Over", -1);
                 let winner = scorer?(this.p2.name) : (this.p1.name);
-                User.update({name: winner},{$inc: {wins: 1}});
+                console.log(winner);
+                User.findOne({
+                    name: winner
+                  }).then(User.update({name: winner}, {$inc: { wins: 1 }}))
+                /*User.findOneAndUpdate({name: winner },  
+                    {name: "louda"}, {new: true, useFindAndModify: false},function (err, docs) { 
+                    if (err){ 
+                        console.log(err) 
+                    } 
+                    else{ 
+                        console.log(docs); 
+                    } 
+                }); */
+                //User.collection("users").update({name: winner},{$inc: {wins: 1}});
                 this.notification(scorer?(this.p2.name + " wins the game!!") : (this.p1.name + " wins the game!!"), -1);
                 this.completed = true;
             }
