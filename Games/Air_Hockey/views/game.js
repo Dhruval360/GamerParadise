@@ -140,7 +140,7 @@ class game{
                       'Content-type': 'application/json'
                     }, 
                     body: JSON.stringify({ "name" : winner}),
-                }).then( () => {}).catch(err => console.log(error)); 
+                }).then( () => {}).catch(err => console.log(err)); 
 
                 // User.find({
                 //     name: 'mihir'
