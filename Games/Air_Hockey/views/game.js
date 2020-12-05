@@ -1,4 +1,5 @@
 const User = require('../../../loginregister/models/User.js');
+const fetch = require("node-fetch");
 class game{ 
     constructor(room, sockets, player1, player2){
         this.room = room;
@@ -131,11 +132,22 @@ class game{
                 this.notification("Game Over", -1);
                 let winner = scorer?(this.p2.name) : (this.p1.name);
                 console.log(winner);
-                User.findOne({
-                    name: winner
-                  }).then(User.update({name: winner}, {$inc: { wins: 1 }}))
+
+                 fetch("http://localhost:5000/users/leaderboard", { 
+                    method: 'POST', 
+                    headers: { 
+                      'Content-type': 'application/json'
+                    }, 
+                    body: JSON.stringify({ "name" : winner}),
+                }).then( () => {}).catch(err => console.log(err)); 
+
+                // User.find({
+                //     name: 'mihir'
+                //   }).then(user => {if (!user) {
+                //       console.log('not found')
+                //   } else console.log(user)})
                 /*User.findOneAndUpdate({name: winner },  
-                    {name: "louda"}, {new: true, useFindAndModify: false},function (err, docs) { 
+                    {name: "", {new: true, useFindAndModify: false},function (err, docs) { 
                     if (err){ 
                         console.log(err) 
                     } 

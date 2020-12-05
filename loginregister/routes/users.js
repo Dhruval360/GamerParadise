@@ -1,17 +1,33 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
-const User = require('../models/User'); // Load User model
-const {forwardAuthenticated} = require('../config/auth');
+// Load User model
+const User = require('../models/User');
+const { forwardAuthenticated } = require('../config/auth');
+router.get("/leaderboard", function (req, res) {   
+  User.find({} , function (err, allDetails) {
+      if (err) {
+          console.log(err);
+      } else {
+          res.render("leaderboard", { details: allDetails })
+      }
+  }).sort({ wins: -1 });
+})
 
-// Leaderboards
-router.get("/leaderboard", (req, res) => {   
-  User.find({} , (err, allDetails) => {
-      if(err) console.log(err);
-      else res.render("leaderboard", {details: allDetails});
-  }).sort({wins: -1});
-});
-
+router.post('/leaderboard', function(req, res) {
+ // console.log(req.body);
+  User.findOne(req.body, function(err,user) {
+    if (err) {
+      console.log(err)
+      res.end();
+    } else {
+      console.log(user.wins)
+      user.wins = user.wins + 1;
+      user.save();
+      res.end();
+    }
+  })
+})
 // Login Page
 router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
 
