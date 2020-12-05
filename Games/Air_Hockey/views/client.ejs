@@ -241,11 +241,10 @@
 	<body>
 		<h1>Air Hockey</h1>
 		
-		<p id="serverInfo">Please enter a name to connect to another player.</p>
+		<p id="serverInfo">Click on the connect button to search for another player online</p>
 		
 		<p id="joinForm">
-			<label for="user">Username:</label>
-			<input id="name" name="user" type="text" value="<%= qs.name %>"/>
+			<input type="hidden" id="name" name="user" type="text" readonly value="<%= qs.name %>"/>
 			<input id="connect" type='button' value='connect'/>
 		</p>
 		
