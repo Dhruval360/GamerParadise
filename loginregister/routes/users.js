@@ -20,10 +20,12 @@ router.post('/leaderboard', function(req, res) {
   User.findOne(req.body, function(err,user) {
     if (err) {
       console.log(err)
+      res.end();
     } else {
       console.log(user.wins)
       user.wins = user.wins + 1;
       user.save();
+      res.end();
     }
   })
 })
