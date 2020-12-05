@@ -1,3 +1,5 @@
+//obtaining db model
+const User = require('C:/Users/Admin/Desktop/Dhruval repo/GamerParadise/loginregister/models/User.js');
 class game{ 
     constructor(room, sockets, player1, player2){
         this.room = room;
@@ -128,6 +130,8 @@ class game{
             // Checking if any player has won the game
             if(this.p1.score >= 10 || this.p2.score >= 10){
                 this.notification("Game Over", -1);
+                let winner = scorer?(this.p2.name) : (this.p1.name);
+                User.update({name: winner},{$inc: {wins: 1}});
                 this.notification(scorer?(this.p2.name + " wins the game!!") : (this.p1.name + " wins the game!!"), -1);
                 this.completed = true;
             }
