@@ -14,6 +14,19 @@ router.get("/leaderboard", function (req, res) {
       }
   }).sort({ wins: -1 });
 })
+
+router.post('/leaderboard', function(req, res) {
+ // console.log(req.body);
+  User.findOne(req.body, function(err,user) {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(user.wins)
+      user.wins = user.wins + 1;
+      user.save();
+    }
+  })
+})
 // Login Page
 router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
 

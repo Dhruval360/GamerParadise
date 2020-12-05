@@ -1,8 +1,10 @@
 //importing packages
 const express = require('express');
+const bodyparser = require('body-parser');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 mongoose.set('useFindAndModify', false);
+mongoose.Promise = global.Promise;
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
@@ -22,6 +24,7 @@ mongoose.connect(
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
 // Express body parser
+app.use(bodyparser.json());
 app.use(express.urlencoded({ extended: true }));
 // Express session
 app.use(
