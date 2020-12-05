@@ -1,21 +1,38 @@
-<h1 class="mt-4">Leaderboard</h1>
 <style>
     body { 
-    background-color: #c07373;
-    color: rgb(49, 77, 168);
+    background-color: #a6afcc;
+    color: rgb(10, 18, 44);
    }
+   table {
+    width: 100%;
+    border: 1px solid black;
+    }
+    th,td{
+    height: 40px;
+    text-align: center;
+    font-size: 25px;
+    }
+    h1{
+        text-align: center
+    }
 </style>
+<h1 class="mt-4">Leaderboard</h1>
 <a href="http://localhost:5000/dashboard" class="btn btn-primary btn-block mb-2">Go back to dashboard</a>
 <% if(details!=null){ %>
 <table>
 <tr>
-    <th colspan="2">Name</th>
-    <th colspan="2">Wins</th>
+    <th>Name</th>
+    <th>Wins</th>
 </tr>
 <% details.forEach(function(item){ %>
 <tr>
-    <td colspan="2"><%= item.name%></td>
-    <td colspan="2"><%= item.wins%></td>
+    <% if(item.name == user.name){%>
+        <td><b><mark><%= item.name%></mark></b></td>
+        <td><b><mark><%= item.wins%></mark></b></td>
+    <% } else {%>
+        <td><%= item.name%></td>
+        <td><%= item.wins%></td>
+    <% } %>
 </tr>
 <% }) %>
 </table>

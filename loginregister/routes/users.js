@@ -9,7 +9,7 @@ router.get("/leaderboard", function (req, res) {
       if (err) {
           console.log(err);
       } else {
-          res.render("leaderboard", { details: allDetails })
+          res.render("leaderboard", { details: allDetails,user: req.user})
       }
   }).sort({ wins: -1 });
 })
