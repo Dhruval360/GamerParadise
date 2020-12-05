@@ -141,21 +141,6 @@ class game{
                     body: JSON.stringify({ "name" : winner}),
                 }).then( () => {}).catch(err => console.log(err)); 
 
-                // User.find({
-                //     name: 'mihir'
-                //   }).then(user => {if (!user) {
-                //       console.log('not found')
-                //   } else console.log(user)})
-                /*User.findOneAndUpdate({name: winner },  
-                    {name: "", {new: true, useFindAndModify: false},function (err, docs) { 
-                    if (err){ 
-                        console.log(err) 
-                    } 
-                    else{ 
-                        console.log(docs); 
-                    } 
-                }); */
-                //User.collection("users").update({name: winner},{$inc: {wins: 1}});
                 this.notification(scorer?(this.p2.name + " wins the game!!") : (this.p1.name + " wins the game!!"), -1);
                 this.completed = true;
             }
