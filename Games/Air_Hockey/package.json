@@ -4,7 +4,8 @@
   "description": "A multiplayer Air hockey game made using socket.io",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "devStart": "nodemon server.js"
   },
   "author": "Dhruval PB",
   "license": "ISC",

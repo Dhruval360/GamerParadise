@@ -1,4 +1,3 @@
-//obtaining db model
 const User = require('../../../loginregister/models/User.js');
 class game{ 
     constructor(room, sockets, player1, player2){

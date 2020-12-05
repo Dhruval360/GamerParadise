@@ -1,30 +1,22 @@
-//const http = require("http");				// web server
-const socketio = require("socket.io");      // socket.io
+const socketio = require("socket.io");  
 var express = require('express');
 var app = express();
-
 
 const Game = require("./views/game.js");   // game class
 const router = require("./router/router.js")
 var PORT = process.env.PORT || process.env.NODE_PORT || 2000;
 
-const server = app.listen(PORT, ()=> console.log('Game server started on port 2000'))
+const server = app.listen(PORT, () => console.log('Game server started on port 2000'));
+var io = socketio(server);
 
-app.set('view engine', 'ejs')
-app.use('/media', express.static('media'))
-
+app.set('view engine', 'ejs');
+app.use('/media', express.static('media'));
 app.use('/', router);
 
 var room = 1; // This is the current room number that gets incremented each time a new room is created
 var users = {}; // To store all connected users
 var userQueue = []; // Stores users that are currently waiting for an opponent. If queue length is more than 2, a new match is created
 var ongoingGames = [];
-
-//var server = http.createServer(router).listen(PORT);
-
-//console.log("HTTP server started, listening on port " + PORT);
-
-var io = socketio(server);
 
 function createMatch(){
     var roomName = "Room" + room;
@@ -42,12 +34,7 @@ function cleanGames(){ // To delete games that have been completed
 }
 
 var onJoined = (socket) => {	
-	socket.on("join", (data) => {		
-		if(users[data.name]){ // To prevent multiple users with the same name
-			socket.emit("msg", { msg: "That name is already in use. Please choose another." });
-			return;
-		}
-
+	socket.on("join", (data) => {	
 		socket.name = data.name; // Storing socket's username on the socket for future use
 		users[data.name] = socket.name; // Storing the user in the database for future reference
 		userQueue.push(socket); // Add user to user queue
@@ -68,7 +55,5 @@ io.sockets.on("connection", (socket) => {
 	onJoined(socket);
 	onDisconnect(socket);
 });
-
-console.log("Websocket server started");
 
 setInterval(cleanGames, 1000); // A loop to clear empty games every second
