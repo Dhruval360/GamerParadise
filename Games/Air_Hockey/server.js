@@ -4,8 +4,6 @@ var express = require('express');
 var app = express();
 
 
-
-
 const Game = require("./views/game.js");   // game class
 const router = require("./router/router.js")
 var PORT = process.env.PORT || process.env.NODE_PORT || 1000;
@@ -74,5 +72,3 @@ io.sockets.on("connection", (socket) => {
 console.log("Websocket server started");
 
 setInterval(cleanGames, 1000); // A loop to clear empty games every second
-
-
