@@ -6,9 +6,9 @@ var app = express();
 
 const Game = require("./views/game.js");   // game class
 const router = require("./router/router.js")
-var PORT = process.env.PORT || process.env.NODE_PORT || 1000;
+var PORT = process.env.PORT || process.env.NODE_PORT || 2000;
 
-const server = app.listen(PORT, ()=> console.log('Game server started on port 1000'))
+const server = app.listen(PORT, ()=> console.log('Game server started on port 2000'))
 
 app.set('view engine', 'ejs')
 app.use('/media', express.static('media'))
