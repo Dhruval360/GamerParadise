@@ -40,7 +40,7 @@ function NavBar({name}) {
                            </a>
                        </li>
                        <li className='nav-item'>
-                           <a href="/games" className='nav-links' onClick={closeMobileMenu}>
+                           <a href={`/?name=${name}#Popular`} className='nav-links' onClick={closeMobileMenu}>
                                Games
                            </a>
                        </li>
@@ -50,7 +50,7 @@ function NavBar({name}) {
                            </a>
                        </li>
                    </ul>
-                   {button && <Button buttonStyle='btn--outline'>SIGN OUT</Button>}
+                   {button && <Button buttonStyle='btn--outline' link="http://localhost:5000/users/logout">SIGN OUT</Button>}
                </div>
            </nav>
         </>

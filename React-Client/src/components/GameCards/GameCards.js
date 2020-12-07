@@ -4,7 +4,7 @@ import GameItem from './GameItem';
 
 function Games({name}) {
   return (
-    <div className='games'>
+    <div className='games' id="Popular">
       <div className='games__container'>
         Most Played
         <div className='games__wrapper'>

@@ -21,7 +21,7 @@ function Footer() {
               type='email'
               placeholder='Your Email'
             />
-            <Button buttonStyle='btn--outline'>Subscribe</Button>
+            <Button buttonStyle='btn--outline' link="Link to subscibe">Subscribe</Button>
           </form>
         </div>
       </section>
@@ -54,10 +54,10 @@ function Footer() {
       </div>
       <section class='social-media'>
         <div class='social-media-wrap'>
-          <div class='footer-logo'>
-            <Link to='/' className='social-logo'>
+          <div class='footer-logo' className='social-logo'>
+            
                 GamerParadise <i class="fas fa-gamepad"></i>
-            </Link>
+            
           </div>
           <small class='website-rights'>GamerParadise © 2020</small>
           <div class='social-icons'>
