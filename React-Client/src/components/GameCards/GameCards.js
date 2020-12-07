@@ -5,40 +5,45 @@ import GameItem from './GameItem';
 function Games() {
   return (
     <div className='games'>
-      <h1>Check out these EPIC Games</h1>
       <div className='games__container'>
+        Most Played
         <div className='games__wrapper'>
           <ul className='games__items'>
             <GameItem
               src='Images/AirHockey.jpeg'
-              text='Explore the hidden waterfall deep inside the Amazon Jungle'
-              label='Adventure'
+              text='A fierce duel of Air Hockey. May the best contender win!!'
+              label='Multiplayer'
               path='/services'
             />
             <GameItem
               src='Images/AirHockey.jpeg'
-              text='Travel through the Islands of Bali in a Private Cruise'
-              label='Luxury'
+              text='Game2'
+              label='Single Player'
               path='/services'
             />
           </ul>
+        </div>
+        </div>
+        <div className='games__container'>
+        New Games
+        <div className='games__wrapper'>
           <ul className='games__items'>
             <GameItem
               src='Images/AirHockey.jpeg'
-              text='Set Sail in the Atlantic Ocean visiting Uncharted Waters'
-              label='Mystery'
+              text='Generic game description to be place here'
+              label='Multiplayer'
               path='/services'
             />
             <GameItem
               src='Images/AirHockey.jpeg'
-              text='Experience Football on Top of the Himilayan Mountains'
-              label='Adventure'
+              text='Game 2'
+              label='Single Player'
               path='/products'
             />
             <GameItem
               src='Images/AirHockey.jpeg'
-              text='Ride through the Sahara Desert on a guided camel tour'
-              label='Adrenaline'
+              text='Game 3'
+              label='Single Player'
               path='/sign-up'
             />
           </ul>

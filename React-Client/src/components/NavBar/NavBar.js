@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '../Buttons/Buttons';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './NavBar.css';
 
-function NavBar() {
+function NavBar({name}) {
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
     
@@ -22,17 +22,17 @@ function NavBar() {
         <>
            <nav className="navbar">
                <div className="navbar-container">
-                   <a href="/" className="navbar-logo" onClick={closeMobileMenu}>
+                    <Link to={`/?name=${name}`} className="navbar-logo" onClick={closeMobileMenu}>
                        GamerParadise <i class="fas fa-gamepad"></i>
-                   </a>
+                    </Link>
                    <div className="menu-icon" onClick={handleClick}>
                        <i className={click ? 'fas fa-times' : 'fas fa-bars'}/>
                    </div>
                    <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                        <li className='nav-item'>
-                           <a href="/" className='nav-links' onClick={closeMobileMenu}>
-                               Home
-                           </a>
+                           <Link to={`/chat?name=${name}&room=chatroom`} className='nav-links' onClick={closeMobileMenu}>
+                               Chat
+                           </Link>
                        </li>
                        <li className='nav-item'>
                            <a href="http://localhost:5000/users/leaderboard" className='nav-links' onClick={closeMobileMenu}>
