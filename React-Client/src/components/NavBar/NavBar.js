@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '../Buttons/Buttons';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import './NavBar.css';
 
 function NavBar() {
@@ -22,35 +22,35 @@ function NavBar() {
         <>
            <nav className="navbar">
                <div className="navbar-container">
-                   <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+                   <a href="/" className="navbar-logo" onClick={closeMobileMenu}>
                        GamerParadise <i class="fas fa-gamepad"></i>
-                   </Link>
+                   </a>
                    <div className="menu-icon" onClick={handleClick}>
                        <i className={click ? 'fas fa-times' : 'fas fa-bars'}/>
                    </div>
                    <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                        <li className='nav-item'>
-                           <Link to="/" className='nav-links' onClick={closeMobileMenu}>
+                           <a href="/" className='nav-links' onClick={closeMobileMenu}>
                                Home
-                           </Link>
+                           </a>
                        </li>
                        <li className='nav-item'>
-                           <Link to="/leaderboards" className='nav-links' onClick={closeMobileMenu}>
+                           <a href="http://localhost:5000/users/leaderboard" className='nav-links' onClick={closeMobileMenu}>
                                Leaderboards
-                           </Link>
+                           </a>
                        </li>
                        <li className='nav-item'>
-                           <Link to="/games" className='nav-links' onClick={closeMobileMenu}>
+                           <a href="/games" className='nav-links' onClick={closeMobileMenu}>
                                Games
-                           </Link>
+                           </a>
                        </li>
                        <li className='nav-item'>
-                           <Link to="/sign-up" className='nav-links-mobile' onClick={closeMobileMenu}>
-                               Sign Up
-                           </Link>
+                           <a href="http://localhost:5000/users/logout" className='nav-links-mobile' onClick={closeMobileMenu}>
+                               Sign Out
+                           </a>
                        </li>
                    </ul>
-                   {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+                   {button && <Button buttonStyle='btn--outline'>SIGN OUT</Button>}
                </div>
            </nav>
         </>
