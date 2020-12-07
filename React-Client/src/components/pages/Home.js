@@ -17,7 +17,7 @@ const Home = ({location}) => {
     <>
       <Navbar name={name}/>
       <Welcome name={name}/>
-      <GameCards />
+      <GameCards name={name} />
       <Footer />
     </>
   );

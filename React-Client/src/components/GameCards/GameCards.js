@@ -2,7 +2,7 @@ import React from 'react';
 import './GameCards.css';
 import GameItem from './GameItem';
 
-function Games() {
+function Games({name}) {
   return (
     <div className='games'>
       <div className='games__container'>
@@ -13,7 +13,7 @@ function Games() {
               src='Images/AirHockey.jpeg'
               text='A fierce duel of Air Hockey. May the best contender win!!'
               label='Multiplayer'
-              path='/services'
+              path={`http://localhost:2000/?name=${name}`}
             />
             <GameItem
               src='Images/AirHockey.jpeg'
