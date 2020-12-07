@@ -5,6 +5,10 @@
 		<title>Air Hockey</title>
 		<style>
 			* {font-family: 'Roboto', sans-serif;}
+
+			a {
+				color: aliceblue;
+			}
 			
 			h1, p {text-align: center;}
 
@@ -239,6 +243,7 @@
 	</head>
 	
 	<body>
+		<a href="http://localhost:3000/?name=<%=qs.name %>" target="_self">Return Home</a>		
 		<h1>Air Hockey</h1>
 		
 		<p id="serverInfo">Click on the connect button to search for another player online</p>
@@ -247,7 +252,6 @@
 			<input type="hidden" id="name" name="user" type="text" readonly value="<%= qs.name %>"/>
 			<input id="connect" type='button' value='Connect'/>
 		</p>
-		
 		<div id="canvasContainer">
 			<canvas width="1280" height="800"></canvas>
 		</div>
