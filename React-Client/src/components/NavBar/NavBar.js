@@ -35,9 +35,9 @@ function NavBar({name}) {
                            </Link>
                        </li>
                        <li className='nav-item'>
-                           <a href="http://localhost:5000/users/leaderboard" className='nav-links' onClick={closeMobileMenu}>
+                           <Link to="/leaderboard" className='nav-links' onClick={closeMobileMenu}>
                                Leaderboards
-                           </a>
+                           </Link>
                        </li>
                        <li className='nav-item'>
                            <a href={`/?name=${name}#Popular`} className='nav-links' onClick={closeMobileMenu}>

@@ -9,7 +9,8 @@ router.get("/leaderboard", function (req, res) {
       if (err) {
           console.log(err);
       } else {
-          res.render("leaderboard", { details: allDetails,user: req.user})
+          //res.render("leaderboard", { details: allDetails,user: req.user})
+          res.send(allDetails);
       }
   }).sort({ wins: -1 });
 })
@@ -28,6 +29,7 @@ router.post('/leaderboard', function(req, res) {
     }
   })
 })
+
 // Login Page
 router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
 
@@ -43,27 +45,34 @@ router.post('/register', (req, res) => {
   if(password != password2) errors.push({ msg: 'Passwords do not match' });
   if(password.length < 6) errors.push({ msg: 'Password must be at least 6 characters' });
 
-  if(errors.length > 0) res.render('register', {errors, name, email, password, password2});
+  if(errors.length > 0) {
+    res.render('register', {errors, name, email, password, password2});
+    //return res.status(400).json({message : error}); // Map to individual error messages
+  } 
   else{
     User.findOne({email : email}).then(user => {
       if(user){
         errors.push({msg: 'Email already exists'});
         res.render('register', {errors, name, email, password, password2});
-      } 
-      
+        //return res.status(400).json({message : "An account with this email id already exists"})
+      }       
       else{
         const newUser = new User({name,email,password});
-        // Encryption
+        // Encrypting the password
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;
             newUser.password = hash;
-            newUser
-              .save()
+            const savedUser = newUser.save() // Saving the user to the database
               .then(user => {
                 req.flash('success_msg', 'You are now registered and can log in');
                 res.redirect('/users/login');
-              }).catch(err => console.log(err));
+                //res.json(savedUser);
+              }).catch(err => {
+                console.log(err);
+                //res.status(500).json({error : err.message});
+                }
+              );
           });
         });
       }

@@ -1,15 +1,11 @@
 module.exports = {
-  ensureAuthenticated: function(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next();
-    }
+  ensureAuthenticated: (req, res, next) => {
+    if (req.isAuthenticated()) return next();
     req.flash('error_msg', 'Please log in to continue');
     res.redirect('/users/login');
   },
-  forwardAuthenticated: function(req, res, next) {
-    if (!req.isAuthenticated()) {
-      return next();
-    }
+  forwardAuthenticated: (req, res, next) => {
+    if (!req.isAuthenticated()) return next();
     res.redirect('/dashboard');      
   }
 };

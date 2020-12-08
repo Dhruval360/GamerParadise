@@ -3,10 +3,10 @@ var express = require('express');
 var app = express();
 
 const Game = require("./Games/Air_Hockey/game");   // game class
-const router = require("./Games/Air_Hockey/router")
-var PORT = process.env.PORT || process.env.NODE_PORT || 2000;
+const router = require("./routes/gameRouter")
+var PORT = 2000;
 
-const server = app.listen(PORT, () => console.log('Game server started on port 2000'));
+const server = app.listen(PORT, () => console.log(`Game server started on port ${PORT}`));
 var io = socketio(server);
 
 app.set('view engine', 'ejs');
