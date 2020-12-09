@@ -2,23 +2,19 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
-// Load User model
-const User = require('../models/User');
-const { forwardAuthenticated } = require('../config/auth');
+const auth = require('../middleware/auth');
 
+const User = require('../models/User'); // Load User model
+
+// Leaderboard
 router.get("/leaderboard",  (req, res) => {   
   User.find({} , (err, allDetails) => {
-      if (err) {
-          console.log(err);
-      } else {
-          //res.render("leaderboard", { details: allDetails,user: req.user})
-          res.send(allDetails);
-      }
+      if (err) res.send(500).json({error : err});
+      else res.send(allDetails);
   }).sort({ wins: -1 });
 })
 
 router.post('/leaderboard', (req, res) => {
- // console.log(req.body);
   User.findOne(req.body, (err,user) => {
     if (err) {
       console.log(err)
@@ -32,11 +28,6 @@ router.post('/leaderboard', (req, res) => {
   })
 })
 
-// Login Page
-router.get('/login', forwardAuthenticated, (req, res) => res.render('login')); 
-
-// Register Page
-router.get('/register', forwardAuthenticated, (req, res) => res.render('register')); 
 
 // Register
 router.post('/register', (req, res) => {
@@ -70,26 +61,7 @@ router.post('/register', (req, res) => {
   }
 });
 
-/*
 // Login
-router.post('/login', (req, res, next) => {
-  passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/users/login',
-    failureFlash: true
-  })(req, res, next);
-});
-
-// Logout
-router.get('/logout', (req, res) => {
-  req.logout();
-  req.flash('success_msg', 'You are logged out');
-  res.redirect('/users/login');
-});
-*/
-
-
-///////////New
 router.post('/login', async (req, res) => {
   try {
     const {email, password} = req.body;
@@ -108,7 +80,6 @@ router.post('/login', async (req, res) => {
   }
 });
 
-const auth = require('../middleware/auth');
 router.delete('/delete', auth, async (req, res) => { // A similar thing can be done for letting user change name or password
   try {
     const deletedUser = await User.findByIdAndDelete(req.user);

@@ -24,9 +24,9 @@ function NavBar({name}) {
         <>
            <nav className="navbar">
                <div className="navbar-container">
-                    <a href='/#home' className="navbar-logo" onClick={closeMobileMenu}>
+                    <Link to='/' className="navbar-logo" onClick={closeMobileMenu}>
                        GamerParadise <i className="fas fa-gamepad"></i>
-                    </a>
+                    </Link>
                    <div className="menu-icon" onClick={handleClick}>
                        <i className={click ? 'fas fa-times' : 'fas fa-bars'}/>
                    </div>
@@ -39,16 +39,20 @@ function NavBar({name}) {
                            </Link>
                        </li>
                        )}
+                       {userData.user && (
                        <li className='nav-item'>
                            <Link to="/leaderboard" className='nav-links' onClick={closeMobileMenu}>
                                Leaderboards
                            </Link>
                        </li>
+                       )}
+                       {userData.user && (
                        <li className='nav-item'>
                            <a href='#Popular' className='nav-links' onClick={closeMobileMenu}>
                                Games
                            </a>
                        </li>
+                       )}
                        <AuthOptions />
                    </ul>
                </div>

@@ -15,13 +15,13 @@ function Games() {
               src='Images/AirHockey.jpeg'
               text='A fierce duel of Air Hockey. May the best contender win!!'
               label='Multiplayer'
-              path={`http://localhost:2000/?name=${userData.user ? userData.user.name : "Gamer"}`}
+              path={`http://localhost:2000/AirHockey?name=${userData.user ? userData.user.name : "Gamer"}`}
             />
             <GameItem
-              src='Images/AirHockey.jpeg'
-              text='Game2'
+              src='Images/WordBeater.png'
+              text='Put your typing skills to the test with this game aptly called WordBeater'
               label='Single Player'
-              path='/services'
+              path={`http://localhost:2000/WordBeater?name=${userData.user ? userData.user.name : "Gamer"}`}
             />
           </ul>
         </div>
@@ -32,21 +32,21 @@ function Games() {
           <ul className='games__items'>
             <GameItem
               src='Images/AirHockey.jpeg'
-              text='Generic game description to be place here'
+              text='A fierce duel of Air Hockey. May the best contender win!!'
               label='Multiplayer'
-              path='/services'
+              path={`http://localhost:2000/AirHockey?name=${userData.user ? userData.user.name : "Gamer"}`}
+            />
+            <GameItem
+              src='Images/WordBeater.png'
+              text='Put your typing skills to the test with this game aptly called WordBeater'
+              label='Single Player'
+              path={`http://localhost:2000/WordBeater?name=${userData.user ? userData.user.name : "Gamer"}`}
             />
             <GameItem
               src='Images/AirHockey.jpeg'
-              text='Game 2'
+              text='Test your mouse aiming skills with this awesome game'
               label='Single Player'
-              path='/products'
-            />
-            <GameItem
-              src='Images/AirHockey.jpeg'
-              text='Game 3'
-              label='Single Player'
-              path='/sign-up'
+              path={`http://localhost:2000/Clicker2D?name=${userData.user ? userData.user.name : "Gamer"}`}
             />
           </ul>
         </div>

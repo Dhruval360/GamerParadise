@@ -34,7 +34,7 @@ function cleanGames(){ // To delete games that have been completed
 }
 
 var onJoined = (socket) => {	
-	socket.on("join", (data) => {	
+	socket.on("join", (data) => {
 		socket.name = data.name; // Storing socket's username on the socket for future use
 		users[data.name] = socket.name; // Storing the user in the database for future reference
 		userQueue.push(socket); // Add user to user queue

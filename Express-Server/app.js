@@ -5,21 +5,16 @@ const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 mongoose.set('useFindAndModify', false); // Needed?
 mongoose.Promise = global.Promise;
-const passport = require('passport');
-const flash = require('connect-flash');
 const session = require('express-session');
 const app = express();
 require('dotenv').config();
 
 const PORT = process.env.PORT || 5000;
 
-require('./config/passport')(passport); // Passport Config
-
 // Connecting to the MongoDB database
 mongoose.connect(process.env.MONGO,{useNewUrlParser: true ,useUnifiedTopology: true, useCreateIndex: true})
   .then(() => console.log('Database mongodb connected'))
   .catch(err => console.log(err));
-
 
 app.use(cors());
 
@@ -34,21 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 // Express session
 app.use(session({secret: 'secret', resave: true, saveUninitialized: true}));
 
-// Passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash()); // Connect flash
-
-// Global variables
-app.use((req, res, next) => {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
-  next();
-});
-
 // Routes
-app.use('/', require('./routes/router.js'));
 app.use('/users', require('./routes/users.js'));
 
 // Chat start
@@ -76,11 +57,8 @@ const io = require('socket.io')(server, options);
 
 io.on('connection', (socket) => {
   socket.on('join', ({name, room}, callback) => {
-      const {error , user} = addUser({id: socket.id, name, room });
-      console.log(user.name, user.room);
-      
-      if(error) return callback(error);
-      
+      const {error , user} = addUser({id: socket.id, name, room });      
+      if(error) return callback(error);      
       socket.emit('message', {user : 'admin', text: `${user.name}, welcome to the room ${user.room}`});
       socket.broadcast.to(user.room).emit('message', {user : 'admin', text: `${user.name}, has joined`});
       socket.join(user.room);

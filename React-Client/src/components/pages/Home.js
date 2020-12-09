@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <>
       <Welcome />
-     <GameCards />
+      <GameCards />
       <Footer />
     </>
   );

@@ -1,8 +1,9 @@
 const router = require('express').Router();
 
-router.get('/', (req, res) => { // Needs to be changed to /AirHockey later so that other games can also be added
-    console.log(req.query);
-    res.render('Games/air_hockey', {qs : req.query}); // Renders the Air Hockey Game
-});
+router.get('/AirHockey', (req, res) => res.render('Games/air_hockey', {qs : req.query})); 
+
+router.get('/WordBeater', (req, res) => res.render('Games/word_beater', {qs : req.query}));
+
+router.get('/Clicker2D', (req, res) => res.render('Games/Clicker2D/clicker_2D', {qs : req.query}));
 
 module.exports = router;

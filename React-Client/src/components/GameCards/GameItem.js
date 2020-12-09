@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 function GameItem(props) {
   return (
@@ -9,7 +8,7 @@ function GameItem(props) {
           <figure className='games__item__pic-wrap' data-category={props.label}>
             <img
               className='games__item__img'
-              alt='Travel Image'
+              alt='Game'
               src={props.src}
             />
           </figure>
