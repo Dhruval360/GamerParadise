@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './GameCards.css';
 import GameItem from './GameItem';
+import UserContext from '../../context/UserContext';
 
-function Games({name}) {
+function Games() {
+  const {userData} = useContext(UserContext);
   return (
     <div className='games' id="Popular">
       <div className='games__container'>
@@ -13,7 +15,7 @@ function Games({name}) {
               src='Images/AirHockey.jpeg'
               text='A fierce duel of Air Hockey. May the best contender win!!'
               label='Multiplayer'
-              path={`http://localhost:2000/?name=${name}`}
+              path={`http://localhost:2000/?name=${userData.user ? userData.user.name : "Gamer"}`}
             />
             <GameItem
               src='Images/AirHockey.jpeg'

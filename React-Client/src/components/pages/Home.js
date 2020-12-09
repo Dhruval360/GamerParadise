@@ -1,23 +1,24 @@
-import React, {useState, useEffect} from 'react';
-import queryString from 'query-string';
+import React, {useState, useEffect, useContext} from 'react';
+import {useHistory} from 'react-router-dom';
 import '../../App.css';
 import GameCards from '../GameCards/GameCards';
 import Welcome from '../Welcome/Welcome';
 import Footer from '../Footer/Footer';
-import Navbar from '../NavBar/NavBar';
+import UserContext from '../../context/UserContext';
 
-const Home = ({location}) => {
-  const [name, setName] = useState('');
+
+const Home = () => {
+  const {userData} = useContext(UserContext);
+  const history = useHistory();
 
   useEffect( () => {
-    const {name} = queryString.parse(location.search);
-    setName(name);
-  });
+    if(!userData.user) history.push('/login');
+  }, [userData.user, history]);
+
   return (
     <>
-      <Navbar name={name}/>
-      <Welcome name={name}/>
-      <GameCards name={name} />
+      <Welcome />
+     <GameCards />
       <Footer />
     </>
   );

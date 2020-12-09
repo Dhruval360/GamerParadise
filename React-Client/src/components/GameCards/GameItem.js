@@ -5,7 +5,7 @@ function GameItem(props) {
   return (
     <>
       <li className='games__item'>
-        <a className='games__item__link' href={props.path}>
+        <a className='games__item__link' href={props.path} target="new">
           <figure className='games__item__pic-wrap' data-category={props.label}>
             <img
               className='games__item__img'

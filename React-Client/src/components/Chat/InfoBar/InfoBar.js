@@ -10,8 +10,8 @@ const InfoBar = ({room, name}) => (
             <h3>{room}</h3>
         </div>
         <div className="rightInnerContainer">
-            <Link to={`/?name=${name}`}>
-                <i class="fa fa-window-close-o fa-3x" aria-hidden="true"></i>
+            <Link to='/'>
+                <i className="fa fa-window-close-o fa-3x" aria-hidden="true"></i>
             </Link>
         </div>
     </div>

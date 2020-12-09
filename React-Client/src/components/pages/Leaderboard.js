@@ -13,7 +13,7 @@ const LeaderBoard = () => {
     }, []);
 
 
-    let usersList = users.map(user => <li key={user.id}>{user.name}</li> )
+let usersList = users.map(user => <li key={user.id}>{user.name} {user.wins}</li> )
     return(
          <ul>{usersList}</ul>
     )
