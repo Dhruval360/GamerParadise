@@ -43,7 +43,7 @@ function Games() {
               path={`http://localhost:2000/WordBeater?name=${userData.user ? userData.user.name : "Gamer"}`}
             />
             <GameItem
-              src='Images/AirHockey.jpeg'
+              src='Images/guess.png'
               text='How lucky are you?'
               label='Single Player'
               path={`http://localhost:2000/guess`}
