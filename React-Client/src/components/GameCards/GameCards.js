@@ -44,9 +44,9 @@ function Games() {
             />
             <GameItem
               src='Images/AirHockey.jpeg'
-              text='Test your mouse aiming skills with this awesome game'
+              text='How lucky are you?'
               label='Single Player'
-              path={`http://localhost:2000/Clicker2D?name=${userData.user ? userData.user.name : "Gamer"}`}
+              path={`http://localhost:2000/guess`}
             />
           </ul>
         </div>

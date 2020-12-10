@@ -12,7 +12,27 @@ var io = socketio(server);
 app.set('view engine', 'ejs');
 app.use('/media', express.static('media'));
 app.use('/', router);
+//guess
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: true}));
+let serverNumber,historyString,userNumber;
 
+app.get('/guess', (req, res) => {
+    serverNumber = Math.floor(Math.random() * 10000) + 1;
+    historyString = '';
+    res.render('Games/guess', {serverNumber, historyString, userNumber});
+  });
+  
+app.get('/game', (req, res) => {
+    res.redirect('/guess');
+});
+  
+app.post('/game', (req, res) => {
+    userNumber = req.body.userNumber;
+    historyString = historyString + userNumber + ', ';
+    res.render('Games/guess', {serverNumber, historyString, userNumber});
+});
+//end guess
 var room = 1; // This is the current room number that gets incremented each time a new room is created
 var users = {}; // To store all connected users
 var userQueue = []; // Stores users that are currently waiting for an opponent. If queue length is more than 2, a new match is created

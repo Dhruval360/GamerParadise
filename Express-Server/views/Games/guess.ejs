@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Guess secret number</title>
+  <style>
+    body {
+  background: url("http://www.atzmut.com/wp-content/uploads/2016/06/Numbers-that-Matter.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.wrap {
+  width: 500px;
+  height: 370px;
+  margin: 50px auto;
+  text-align: center;
+  background-color: #ccccff;
+  border: 2px solid #9999ff;
+}
+h1 {
+  color: #8a8ad4;
+}
+button {
+  color: rgb(190, 140, 140);
+  background-color: #3d3d5c;
+}
+.guess {
+  font-weight: bold;
+}
+.high {
+  color: #ac00e6;
+}
+
+.low {
+  color: #3377ff;
+}
+.win {
+  color: #cc0000;
+}
+  </style>
+
+<body>
+
+  <div class="wrap">
+
+    <h1>Guess your lucky number</h1>
+    <p>Server will generate a random number between 1 and 10000. Try to guess it!</p>
+    <form action='/game' method="post">
+      <input type="number" name="userNumber" min="1" max="10000" autofocus>
+      <button type="submit">Start</button>
+    </form>
+    <p class="guess">Your guess is:<%= userNumber %></p>
+
+    <% if (userNumber == serverNumber) { %>
+      <h3 class="win">You win !! The secret number is <%= serverNumber %></h3>
+      <% } else if (userNumber > serverNumber) { %>
+        <p class="high">Your number is higher than secret number.</p>
+        <% } else if (userNumber < serverNumber && userNumber !== undefined) { %>
+          <p class="low">Your number is lower than secret number.</p>
+          <% } %>
+            <p>History of your guesses:</p>
+            <p><%= historyString %></p>
+            <form action='/game' method="get">
+              <button type="submit">Refresh</button>
+            </form>
+  </div>
+</body>
+</html>
