@@ -41,7 +41,7 @@ class game{
         this.p2.emit("infoUpdate", {object:"user", side:1});
 
         // Start sequence of the game
-        this.multiNotification(["First to score 10 goals wins", "Good luck!!", "Game starting in 3....", "2....", "1....", "Go!"], 1000);
+        this.multiNotification(["First to score 5 goals wins", "Good luck!!", "Game starting in 3....", "2....", "1....", "Go!"], 1000);
         this.activatePhysics(6000);
     }
 
@@ -128,10 +128,9 @@ class game{
             this.emitPuckInfo();
 
             // Checking if any player has won the game
-            if(this.p1.score >= 1 || this.p2.score >= 1){
+            if(this.p1.score >= 5 || this.p2.score >= 5){
                 this.notification("Game Over", -1);
                 let winner = scorer?(this.p2.name) : (this.p1.name);
-                console.log(winner);
 
                  fetch("http://localhost:5000/users/leaderboard", { 
                     method: 'POST', 

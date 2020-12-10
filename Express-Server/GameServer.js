@@ -2,7 +2,7 @@ const socketio = require("socket.io");
 var express = require('express');
 var app = express();
 
-const Game = require("./Games/Air_Hockey/game");   // game class
+const Game = require("./Games/Air_Hockey/game");   // AirHockey Game class
 const router = require("./routes/gameRouter")
 var PORT = 2000;
 
@@ -12,6 +12,7 @@ var io = socketio(server);
 app.set('view engine', 'ejs');
 app.use('/media', express.static('media'));
 app.use('/', router);
+
 //guess
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
@@ -33,6 +34,7 @@ app.post('/game', (req, res) => {
     res.render('Games/guess', {serverNumber, historyString, userNumber});
 });
 //end guess
+
 var room = 1; // This is the current room number that gets incremented each time a new room is created
 var users = {}; // To store all connected users
 var userQueue = []; // Stores users that are currently waiting for an opponent. If queue length is more than 2, a new match is created
