@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useEffect, useContext} from 'react';
 import {useHistory} from 'react-router-dom';
 import '../../App.css';
 import GameCards from '../GameCards/GameCards';

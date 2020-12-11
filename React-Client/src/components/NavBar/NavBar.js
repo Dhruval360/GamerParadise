@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Button } from '../Buttons/Buttons';
 import { Link } from 'react-router-dom';
 import AuthOptions from '../Auth/AuthOptions'
 import './NavBar.css';

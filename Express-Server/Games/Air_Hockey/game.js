@@ -1,14 +1,13 @@
-const User = require('../../models/User.js');
 const fetch = require("node-fetch");
 class game{ 
-    constructor(room, sockets, player1, player2){
+    constructor(room, io, player1, player2){
         this.room = room;
-        this.sock = sockets;
+        this.io = io;
         this.p1 = player1;
         this.p2 = player2;
 
-        this.boardWidth = 1280; // The board's width
-        this.boardHeight = 800; // The board's height
+        this.boardWidth = 960; // The board's width
+        this.boardHeight = 600; // The board's height
 
         this.completed = false; // Used to know when the game has been completed
         this.physics = false; // Used for deactivating the physiscs of the game when needed
@@ -26,16 +25,16 @@ class game{
         this.p1.position = {x:this.boardWidth*0.25, y:this.boardHeight/2};
         this.p2.position = {x:this.boardWidth*0.75, y:this.boardHeight/2};
         // Passing both the players to the main update callback
-        this.onUpdate(this.p1);
-        this.onUpdate(this.p2);
+        this.onUpdate(player1);
+        this.onUpdate(player2);
 
-        this.sock.sockets.in(this.room).emit("Start Match"); // Signalling the start of a game to the players
+        this.io.sockets.in(this.room).emit("Start Match"); // Signalling the start of a game to the players
 
         // Sending information of the other player to both the players
         this.p1.emit("infoUpdate", {object:"contender", name:this.p2.name});
         this.p2.emit("infoUpdate", {object:"contender", name:this.p1.name});
-        this.p1.emit("message", {message:"Match making complete. You will now be playing against " + this.p2.name + "."});
-        this.p2.emit("message", {message:"Match making complete. You will now be playing against " + this.p1.name + "."});
+        this.p1.emit("message", {message:"Match making complete. You are now playing against " + this.p2.name + "."});
+        this.p2.emit("message", {message:"Match making complete. You are now playing against " + this.p1.name + "."});
         this.p1.side = 0;
         this.p2.side = 1;
         this.p2.emit("infoUpdate", {object:"user", side:1});
@@ -56,7 +55,7 @@ class game{
     }
 
     notification(message, duration){ // Used for sending a single notification to both the players in the room
-        this.sock.sockets.in(this.room).emit("notification", {message:message, duration:duration});
+        this.io.sockets.in(this.room).emit("notification", {message:message, duration:duration});
     }
 
     multiNotification(messages, duration){ // Used for sending multiple notifications to both the players in the room
@@ -107,7 +106,7 @@ class game{
     }
 
     emitPuckInfo(){ // To broadcast the puck's info to both the players in the room
-        this.sock.sockets.in(this.room).emit("infoUpdate", 
+        this.io.sockets.in(this.room).emit("infoUpdate", 
             {object:"puck", position:this.puck.position, velocity:this.puck.velocity, time:new Date().getTime()});
     }
 
@@ -123,7 +122,7 @@ class game{
                 this.p2.score++;
             }
             this.deactivatePhysics(); // Deactivating the game's physics for sometime
-            this.sock.sockets.in(this.room).emit("goalScored", {side:scorer});
+            this.io.sockets.in(this.room).emit("goalScored", {side:scorer});
             this.resetPuck();
             this.emitPuckInfo();
 
@@ -187,7 +186,7 @@ class game{
             }
             if(I1 || I2){ // Adding changes to the puck's velocity if a hit has occured
                 this.puck.velocity.x += puckVelocity.x;
-                this.puck.velocity.x += puckVelocity.x;
+                this.puck.velocity.y += puckVelocity.y;
             }
             // Moving the puck according to its velocity
             this.puck.position.x += this.puck.velocity.x; 

@@ -111,7 +111,7 @@
                         case "contender":
 							if(data.time > contender.lastTime){ // Update opponent's info only if the new data is more recent
 								if(data.position) contender.position = data.position;
-								if (data.name) contender.name = data.name;													
+								if(data.name) contender.name = data.name;													
 								contender.lastTime = data.time; // Update opponent's last updated time to this packet's time
 							}
                             break;
@@ -199,14 +199,16 @@
 				// Drawing the scores in the corners
 				ctx.save();
 				if(side.is === 0){
-					ctx.fillText(user.name + ": " + user.points, 5, 25);
+					ctx.font = "20pt Roboto";
+					ctx.fillText(user.name + ": " + user.points, 10, 30);
 					ctx.textAlign = "end";
-					ctx.fillText(contender.points + " :" + contender.name, canvas.width - 5, 25);
+					ctx.fillText(contender.points + " :" + contender.name, canvas.width -10, 30);
 				}
 				else {
-					ctx.fillText(contender.name + ": " + contender.points, 5, 25);
+					ctx.font = "20pt Roboto";
+					ctx.fillText(contender.name + ": " + contender.points, 10, 30);
 					ctx.textAlign = "end";
-					ctx.fillText(user.points + " :" + user.name, canvas.width - 5, 25);
+					ctx.fillText(user.points + " :" + user.name, canvas.width -10, 30);
 				}
 				ctx.restore();
 				
