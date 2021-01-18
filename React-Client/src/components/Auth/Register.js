@@ -41,9 +41,7 @@ function Register() {
             <form onSubmit={Submit} className='Auth' >
                 <br />
                 <h1 className="Auth">
-                Get started with us today!<br/> 
-                Create your account by filling out the
-                information below.
+                Welcome aboard!!
                 </h1>
                 {errors && <p className="error">{errors}</p>}
                 <div className='form-inputs'>
@@ -99,10 +97,9 @@ function Register() {
                 
                 </div>
                 <input className='form-input-btn' type='submit' value="SIGN UP">
-                
                 </input>
                 <span className='form-input-login'>
-                <br/>Already have an account? Login <Link to='/login'>here</Link> 
+                <br/><br/>Already have an account? Login <Link to='/login'>here</Link> 
                 </span>
             </form>
             </div>

@@ -21,9 +21,7 @@ function AuthOptions() {
                     </li>
                 ) :
                 (
-                <li className='nav-buttons'>
-                    <Button link='/login' buttonStyle='btn--outline'>SIGN IN</Button>
-                </li>
+                <></>
                 )
             }
             

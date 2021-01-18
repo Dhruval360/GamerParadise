@@ -68,7 +68,7 @@ function Login() {
                 
                 </input>
                 <span className='form-input-login'>
-                <br/>Don't have an account? Register <Link to='/register'>here</Link> 
+                <br/><br/>Don't have an account? Register <Link to='/register'>here</Link> 
                 </span>
             </form>
             </div>
