@@ -22,7 +22,7 @@ A Multi-functional game web-application that hosts games loaded with many cool f
 ## Clone the repository:
 
 ```bash
-$ git clone https://github.com/...
+$ git clone https://github.com/Dhruval360/GamerParadise
 ```
 
 ## Run the app:

@@ -33,44 +33,42 @@ function Login() {
                 <img className='form-img' src='Images/img-2.svg' alt='spaceship' />
             </div>
             <div className='form-content-right'>
-            <form onSubmit={Submit} className='Auth' >
-                <br />
-                <h1 className="Auth">
-                Login
-                </h1>
-                {errors && <p className="error">{errors}</p>}
-                <div className='form-inputs'>
-                <label className='form-label'>Email</label>
-                <input
-                    required={true}
-                    className='form-input'
-                    type='email'
-                    name='email'
-                    placeholder='Enter your email'
-                    onChange={(e) => setEmail(e.target.value)}
-                />
+                <form onSubmit={Submit} className='Auth' >
+                    <br />
+                    <h1 className="Auth">
+                    Login
+                    </h1>
+                    {errors && <p className="error">{errors}</p>}
+                    <div className='form-inputs'>
+                        <label className='form-label'>Email</label>
+                        <input
+                            required={true}
+                            className='form-input'
+                            type='email'
+                            name='email'
+                            placeholder='Enter your email'
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
 
-                </div>
-                <div className='form-inputs'>
-                <label className='form-label'>Password</label>
-                <input
-                    required={true}
-                    className='form-input'
-                    type='password'
-                    name='password'
-                    placeholder='Enter your password'
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                
-                </div>
-                
-                <input className='form-input-btn' type='submit' value="LOG IN">
-                
-                </input>
-                <span className='form-input-login'>
-                <br/><br/>Don't have an account? Register <Link to='/register'>here</Link> 
-                </span>
-            </form>
+                    </div>
+                    <div className='form-inputs'>
+                        <label className='form-label'>Password</label>
+                        <input
+                            required={true}
+                            className='form-input'
+                            type='password'
+                            name='password'
+                            placeholder='Enter your password'
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    
+                    </div>
+                    
+                    <input className='form-input-btn' type='submit' value="LOG IN"></input>
+                    <span className='form-input-login'>
+                        <br/><br/>Don't have an account? Register <Link to='/register'>here</Link> 
+                    </span>
+                </form>
             </div>
         </div>
         </>
